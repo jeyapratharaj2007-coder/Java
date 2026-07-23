@@ -1,0 +1,83 @@
+import java.util.*;
+
+public class StringOperationsArrayList {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        ArrayList<String> cities = new ArrayList<>();
+
+        // Initial List
+        cities.add("Chennai");
+        cities.add("Madurai");
+        cities.add("Trichy");
+
+        System.out.println("Initial List: " + cities);
+
+        System.out.println("\n1. Append City");
+        System.out.println("2. Insert City at Index");
+        System.out.println("3. Search City");
+        System.out.println("4. Display Cities Starting with Letter");
+
+        System.out.print("\nEnter your choice: ");
+        int choice = sc.nextInt();
+        sc.nextLine();
+
+        switch(choice) {
+
+            case 1:
+                System.out.print("Enter city to add: ");
+                String city = sc.nextLine();
+                cities.add(city);
+                System.out.println("Updated List: " + cities);
+                break;
+
+            case 2:
+                System.out.print("Enter index: ");
+                int index = sc.nextInt();
+                sc.nextLine();
+
+                System.out.print("Enter city to insert: ");
+                String city1 = sc.nextLine();
+
+                if(index >= 0 && index <= cities.size()) {
+                    cities.add(index, city1);
+                    System.out.println("Updated List: " + cities);
+                }
+                else {
+                    System.out.println("Invalid Index");
+                }
+                break;
+
+            case 3:
+                System.out.print("Enter city to search: ");
+                String search = sc.nextLine();
+
+                int pos = cities.indexOf(search);
+
+                if(pos != -1)
+                    System.out.println("City Found at Index: " + pos);
+                else
+                    System.out.println("City Not Found");
+
+                break;
+
+            case 4:
+                System.out.print("Enter starting letter: ");
+                char ch = sc.next().charAt(0);
+
+                System.out.println("Cities Starting with '" + ch + "'");
+
+                for(String s : cities) {
+                    if(s.toLowerCase().startsWith(Character.toString(ch).toLowerCase()))
+                        System.out.println(s);
+                }
+                break;
+
+            default:
+                System.out.println("Invalid Choice");
+        }
+
+        sc.close();
+    }
+}
